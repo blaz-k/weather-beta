@@ -1,54 +1,81 @@
 <template>
-  <div>
-    <div class="card" style="width: 18rem">
-      <img src="" class="card-img-top" alt="" />
-      <div class="card-body">
-        <h5 class="card-title">city: {{ mesto }}</h5>
-        <p class="card-text">Temp in {{}} is:</p>
-        <a href="" class="btn btn-primary">Go somewhere</a>
+  <div v-if="mesto">
+    <div class="card mb-4 col-sm-6" style="max-width: 340px">
+      <div class="row g-0">
+        <div class="col-md-4" v-if="mesto.weather[0].main === 'Clouds'">
+          <img
+            src="../assets/cloudy.jpg"
+            class="img-fluid rounded-start"
+            alt=""
+          />
+        </div>
+        <div class="col-md-4" v-else-if="mesto.weather[0].main === 'Clear'">
+          <img
+            src="../assets/clear.png "
+            class="img-fluid rounded-start"
+            alt=""
+          />
+        </div>
+        <div class="col-md-4" v-else-if="mesto.weather[0].main === 'Fog'">
+          <img
+            src="../assets/foggy.png"
+            class="img-fluid rounded-start"
+            alt=""
+          />
+        </div>
+
+        <div class="col-md-4" v-else>
+          <img
+            src="../assets/rain.png"
+            class="img-fluid rounded-start"
+            alt=""
+          />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">
+              {{ mesto.name }}, {{ mesto.sys.country }}
+            </h5>
+            <p class="card-text">{{ Math.round(mesto.main.temp) }} °C</p>
+            <p class="card-text">
+              <small class="text-muted">{{ noviDatum }}</small>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import moment from "moment";
 import axios from "axios";
 
 export default {
   name: "CityCard",
   props: ["city"],
+  computed: {
+    noviDatum() {
+      let date = new Date(this.mesto.dt * 1000);
+      return moment(date).format("DD/MMMM/YYYY");
+    },
+  },
 
   data() {
     return {
       apiKey: "61c7d12c7c82021c85f17dc82f594edb",
       url: "https://api.openweathermap.org/data/2.5/",
       unit: "metric",
-      mesto: [],
+      mesto: null,
     };
   },
   methods: {
     async getData() {
-      console.log("data for city: " + this.city);
-      console.log("data for mesto: " + this.mesto);
       let response = await axios.get(
-        `${this.url}weather?q=${this.city}&units=${this.unit}&appid=${this.apiKey}`,
-        console.log(
-          "consola: " +
-            `${this.url}weather?q=${this.city}&units=${this.unit}&appid=${this.apiKey}`
-        ),
-        console.log("data for mesto2: " + this.mesto)
+        `${this.url}weather?q=${this.city}&units=${this.unit}&appid=${this.apiKey}`
       );
-      console.log("repsonse data");
-      console.log(response.data);
       this.mesto = response.data;
-      console.log("data for mesto3: " + this.mesto.main.temp);
-
-      /*
-      console.log("this mesto lon: " + this.mesto.coord.lon);
-      console.log("this mesto lat: " + this.mesto.coord.lat);
-      console.log("this mesto temp: " + this.mesto.main.temp);
-      console.log("this ime: " + this.mesto.name);
-      console.log("this ime city: " + this.city);*/
+      console.log(response.data);
     },
   },
   created() {
@@ -58,6 +85,9 @@ export default {
 </script>
 
 <style>
+.card {
+  display: inline-block;
+}
 </style>
 
 <!--

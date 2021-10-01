@@ -1,14 +1,13 @@
 <template>
   <div>
-    <h2>Cities</h2>
-    <div :key="mesto" v-for="mesto in cities">
-      <CityCard :city="mesto" />
+    <div :key="city" v-for="city in cities">
+      <CityCard class="red" :city="city" />
     </div>
   </div>
 </template>
 
 <script>
-import CityCard from "./CityCard";
+import CityCard from "../components/CityCard";
 
 export default {
   name: "Cities",
@@ -27,6 +26,10 @@ export default {
         "Madrid, ES",
         "Ljubljana, SI",
         "Paris, FR",
+        "Calvi, FR",
+        "London, GB",
+        "Oslo, NO",
+        "Moscow RU",
       ],
     };
   },
@@ -34,4 +37,8 @@ export default {
 </script>
 
 <style>
+.red {
+  background-color: red;
+  margin: 10px;
+}
 </style>
