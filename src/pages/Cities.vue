@@ -1,7 +1,7 @@
 <template>
   <div>
     <div :key="city" v-for="city in cities">
-      <CityCard class="red" :city="city" />
+      <CityCard :city="city" />
     </div>
   </div>
 </template>
@@ -37,8 +37,4 @@ export default {
 </script>
 
 <style>
-.red {
-  background-color: red;
-  margin: 10px;
-}
 </style>

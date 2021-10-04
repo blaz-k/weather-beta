@@ -4,34 +4,31 @@
       <div class="row g-0">
         <div class="col-md-4" v-if="mesto.weather[0].main === 'Clouds'">
           <img
-            src="../assets/cloudy.jpg"
-            class="img-fluid rounded-start"
-            alt=""
-          />
-        </div>
-        <div class="col-md-4" v-else-if="mesto.weather[0].main === 'Clear'">
-          <img
-            src="../assets/clear.png "
-            class="img-fluid rounded-start"
-            alt=""
-          />
-        </div>
-        <div class="col-md-4" v-else-if="mesto.weather[0].main === 'Fog'">
-          <img
-            src="../assets/foggy.png"
+            src="../assets/Clouds.png"
             class="img-fluid rounded-start"
             alt=""
           />
         </div>
 
-        <div class="col-md-4" v-else>
+        <div class="col-md-4" v-else-if="mesto.weather[0].main === 'Clear'">
           <img
-            src="../assets/rain.png"
+            src="../assets/Clear.png "
             class="img-fluid rounded-start"
             alt=""
           />
         </div>
-        <div class="col-md-8">
+        <div class="col-md-4" v-else-if="mesto.weather[0].main === 'Fog'">
+          <img src="../assets/Fog.png" class="img-fluid rounded-start" alt="" />
+        </div>
+
+        <div class="col-md-4" v-else>
+          <img
+            src="../assets/Rain.png"
+            class="img-fluid rounded-start"
+            alt=""
+          />
+        </div>
+        <a class="col-md-8 btn" href="/home">
           <div class="card-body">
             <h5 class="card-title">
               {{ mesto.name }}, {{ mesto.sys.country }}
@@ -41,7 +38,7 @@
               <small class="text-muted">{{ noviDatum }}</small>
             </p>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </div>
@@ -89,20 +86,3 @@ export default {
   display: inline-block;
 }
 </style>
-
-<!--
-      apiKey: "61c7d12c7c82021c85f17dc82f594edb",
-      url: "https://api.openweathermap.org/data/2.5/",
-
-
-    async getCities() {
-      let response = await axios.get(
-        `${this.url}weather?q=${this.cities}&units=${this.unit}&appid=${this.apiKey}`
-      );
-      console.log(response.data);
-      this.cities = response.data;
-      unit: "metric",
-Temp in {{ Math.round(city.weather[0].main) }}
-
-    },
-      -->
