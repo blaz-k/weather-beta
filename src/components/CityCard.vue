@@ -28,7 +28,7 @@
             alt=""
           />
         </div>
-        <a class="col-md-8 btn" href="/home">
+        <a class="col-md-8 btn" href="" @click="cityDetail">
           <div class="card-body">
             <h5 class="card-title">
               {{ mesto.name }}, {{ mesto.sys.country }}
@@ -56,6 +56,20 @@ export default {
       let date = new Date(this.mesto.dt * 1000);
       return moment(date).format("DD/MMMM/YYYY");
     },
+    getLongitude() {
+      if (this.mesto) {
+        return this.mesto.coord.lon;
+      }
+
+      return null;
+    },
+    getLatitude() {
+      if (this.mesto) {
+        return this.mesto.coord.lat;
+      }
+
+      return null;
+    },
   },
 
   data() {
@@ -64,6 +78,7 @@ export default {
       url: "https://api.openweathermap.org/data/2.5/",
       unit: "metric",
       mesto: null,
+      details: null,
     };
   },
   methods: {
@@ -72,7 +87,14 @@ export default {
         `${this.url}weather?q=${this.city}&units=${this.unit}&appid=${this.apiKey}`
       );
       this.mesto = response.data;
-      console.log(response.data);
+    },
+    async cityDetail() {
+      let res = await axios.get(
+        `onecall?lat=${this.getLatitude}&lon=${this.getLongitude}&exclude=daily&appid=${this.apiKey}`
+      );
+      this.details = res.data;
+      alert("let" + this.lat);
+      console.log(res.data);
     },
   },
   created() {

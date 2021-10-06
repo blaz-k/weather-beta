@@ -29,7 +29,6 @@ export default {
         "Calvi, FR",
         "London, GB",
         "Oslo, NO",
-        "Moscow RU",
       ],
     };
   },
