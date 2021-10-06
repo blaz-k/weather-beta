@@ -25,8 +25,6 @@
 </template>
 
 <script>
-import CityCard from "../components/CityCard";
-
 export default {
   name: "CityDetails",
 };

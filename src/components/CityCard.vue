@@ -1,6 +1,10 @@
 <template>
   <div v-if="mesto">
-    <div class="card mb-4 col-sm-6" style="max-width: 340px">
+    <div
+      class="card mb-4 col-sm-6"
+      style="max-width: 340px"
+      @click="cityDetail"
+    >
       <div class="row g-0">
         <div class="col-md-4" v-if="mesto.weather[0].main === 'Clouds'">
           <img
@@ -28,17 +32,13 @@
             alt=""
           />
         </div>
-        <a class="col-md-8 btn" href="" @click="cityDetail">
-          <div class="card-body">
-            <h5 class="card-title">
-              {{ mesto.name }}, {{ mesto.sys.country }}
-            </h5>
-            <p class="card-text">{{ Math.round(mesto.main.temp) }} °C</p>
-            <p class="card-text">
-              <small class="text-muted">{{ noviDatum }}</small>
-            </p>
-          </div>
-        </a>
+        <div class="card-body col-md-8 btn">
+          <h5 class="card-title">{{ mesto.name }}, {{ mesto.sys.country }}</h5>
+          <p class="card-text">{{ Math.round(mesto.main.temp) }} °C</p>
+          <p class="card-text">
+            <small class="text-muted">{{ noviDatum }}</small>
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -90,10 +90,9 @@ export default {
     },
     async cityDetail() {
       let res = await axios.get(
-        `onecall?lat=${this.getLatitude}&lon=${this.getLongitude}&exclude=daily&appid=${this.apiKey}`
+        `${this.url}onecall?lat=${this.getLatitude}&lon=${this.getLongitude}&exclude=daily&appid=${this.apiKey}`
       );
       this.details = res.data;
-      alert("let" + this.lat);
       console.log(res.data);
     },
   },
