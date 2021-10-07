@@ -1,4 +1,6 @@
 <template>
+  <CityCard />
+
   <div
     id="carouselExampleSlidesOnly"
     class="carousel slide"
@@ -7,7 +9,6 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img src="" class="d-block w-100" alt="" />
-        {{ mesto.name }}, {{ mesto.sys.country }}
       </div>
     </div>
   </div>
@@ -15,6 +16,7 @@
     <img src="" class="card-img-top" alt="" />
     <div class="card-body"></div>
     <ul class="list-group list-group-flush">
+      <li class="list-group-item">Details: {{ details }}</li>
       <li class="list-group-item">Wind speed</li>
       <li class="list-group-item">Humidity:</li>
       <li class="list-group-item">Pressure</li>
@@ -25,8 +27,13 @@
 </template>
 
 <script>
+import CityCard from "../components/CityCard";
+
 export default {
   name: "CityDetails",
+  components: {
+    CityCard,
+  },
 };
 </script>
 

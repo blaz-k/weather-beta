@@ -60,7 +60,6 @@ export default {
       if (this.mesto) {
         return this.mesto.coord.lon;
       }
-
       return null;
     },
     getLatitude() {

@@ -4,29 +4,20 @@
       <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
           <span class="navbar-brand mb-0 h1">WeatherBeta</span>
-
-          <router-link to="/city-details"
-            ><a class="nav-link">Details</a></router-link
-          >
-
           <router-link to="/">Home</router-link>
-          <router-view></router-view>
+          <router-link to="/cities">Cities</router-link>
+          <router-link to="/city-details">City Details</router-link>
         </div>
+        <router-view />
       </nav>
-
-      <Cities />
     </main>
   </div>
 </template>
 
 <script>
-import Cities from "./pages/Cities";
-
 export default {
-  name: "app",
-  components: {
-    Cities,
-  },
+  name: "App",
+  components: {},
 };
 </script>
 
