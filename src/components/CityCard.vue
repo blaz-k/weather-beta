@@ -87,12 +87,14 @@ export default {
       );
       this.mesto = response.data;
     },
-    async cityDetail() {
-      let res = await axios.get(
-        `${this.url}onecall?lat=${this.getLatitude}&lon=${this.getLongitude}&exclude=daily&appid=${this.apiKey}`
-      );
-      this.details = res.data;
-      console.log(res.data);
+    cityDetail() {
+      console.log(this.city);
+      this.$router.push({
+        name: "CityDetails",
+        params: {
+          cityname: this.city,
+        },
+      });
     },
   },
   created() {
