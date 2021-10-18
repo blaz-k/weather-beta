@@ -1,57 +1,106 @@
 <template>
   <div v-if="details">
-    <div class="upper">
-      <div class="card text-center">
-        <div class="card-header">{{ details.timezone }}</div>
-        <div class="card-body">
-          <h5 class="card-title">Tukaj bo slika vremena</h5>
-          <p class="card-text">
-            With supporting text below as a natural lead-in to additional
-            content.
-          </p>
+    <div class="upper m-4">
+      <div class="card text-center w-100">
+        <div class="card-header">
+          <strong>
+            <h1>{{ details.timezone }}</h1></strong
+          >
         </div>
-        <div class="card-footer text-muted">{{ details.current.temp }} °C</div>
+        <div
+          class="card-body"
+          v-if="details.current.weather[0].main === 'Clouds'"
+        >
+          <h5 class="card-title">Today's weather:</h5>
+          <img
+            src="../assets/Clouds.png"
+            class="img-fluid rounded-start"
+            alt=""
+          />
+        </div>
+        <div
+          class="card-body"
+          v-else-if="details.current.weather[0].main === 'Clear'"
+        >
+          <h5 class="card-title">Today's weather:</h5>
+          <img
+            src="../assets/Clear.png"
+            class="img-fluid rounded-start"
+            alt=""
+          />
+        </div>
+        <div
+          class="card-body"
+          v-else-if="details.current.weather[0].main === 'Fog'"
+        >
+          <h5 class="card-title">Today's weather:</h5>
+          <img src="../assets/Fog.png" class="img-fluid rounded-start" alt="" />
+        </div>
+        <div class="card-body" v-else>
+          <h5 class="card-title">Today's weather:</h5>
+          <img
+            src="../assets/Rain.png"
+            class="img-fluid rounded-start"
+            alt=""
+          />
+        </div>
+        <div class="card-footer">{{ Math.round(details.current.temp) }} °C</div>
       </div>
     </div>
-    <div class="downleft">
-      <div class="card" style="width: 18rem">
-        <div class="card-header">Informations</div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            Wind speed: {{ details.current.wind_speed }} m/s
-          </li>
-          <li class="list-group-item">
-            Humidity: {{ details.current.humidity }}
-          </li>
-        </ul>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="downleft">
+          <div class="card w-75 m-4">
+            <div class="card-header">Informations</div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <em>Wind speed: </em>
+                <strong>{{ details.current.wind_speed }} m/s</strong>
+              </li>
+              <li class="list-group-item">
+                <em>Humidity: </em>
+                <strong>{{ details.current.humidity }} %</strong>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="downright">
-      <div class="card" style="width: 18rem">
-        <div class="card-header">7-day forecast</div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            Day 1: {{ details.daily[1].temp.day }}
-          </li>
-          <li class="list-group-item">
-            Day 2: {{ details.daily[2].temp.day }}
-          </li>
-          <li class="list-group-item">
-            Day 3: {{ details.daily[3].temp.day }}
-          </li>
-          <li class="list-group-item">
-            Day 4: {{ details.daily[4].temp.day }}
-          </li>
-          <li class="list-group-item">
-            Day 5: {{ details.daily[5].temp.day }}
-          </li>
-          <li class="list-group-item">
-            Day 6: {{ details.daily[6].temp.day }}
-          </li>
-          <li class="list-group-item">
-            Day 7: {{ details.daily[7].temp.day }}
-          </li>
-        </ul>
+      <div class="col-sm-6">
+        <div class="downright">
+          <div class="card w-75 m-4">
+            <div class="card-header">7-day forecast</div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <em>Day 1: </em>
+                <strong>{{ Math.round(details.daily[1].temp.day) }} °C</strong>
+              </li>
+              <li class="list-group-item">
+                <em>Day 2: </em>
+                <strong>{{ Math.round(details.daily[2].temp.day) }} °C</strong>
+              </li>
+              <li class="list-group-item">
+                <em>Day 3: </em>
+                <strong>{{ Math.round(details.daily[3].temp.day) }} °C</strong>
+              </li>
+              <li class="list-group-item">
+                <em>Day 4: </em>
+                <strong>{{ Math.round(details.daily[4].temp.day) }} °C</strong>
+              </li>
+              <li class="list-group-item">
+                <em>Day 5: </em>
+                <strong>{{ Math.round(details.daily[5].temp.day) }} °C</strong>
+              </li>
+              <li class="list-group-item">
+                <em>Day 6: </em>
+                <strong>{{ Math.round(details.daily[6].temp.day) }} °C</strong>
+              </li>
+              <li class="list-group-item">
+                <em>Day 7: </em>
+                <strong>{{ Math.round(details.daily[7].temp.day) }} °C</strong>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
