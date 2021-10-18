@@ -92,7 +92,7 @@ export default {
       this.$router.push({
         name: "CityDetails",
         params: {
-          cityname: this.city,
+          lonlat: `${this.getLongitude},${this.getLatitude}`,
         },
       });
     },

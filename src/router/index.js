@@ -7,7 +7,7 @@ import CityDetails from '../pages/CityDetails.vue'
 const routes = [
   { path: '/', name:'Home' , component: Home },
   { path: '/cities', name:'Cities' , component: Cities },
-  { path: '/city-details/:cityname', name: 'CityDetails', component: CityDetails, props: true}
+  { path: '/city-details/:lonlat', name: 'CityDetails', component: CityDetails, props: true}
 ]
 
 const router = createRouter({
