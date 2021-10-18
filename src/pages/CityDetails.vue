@@ -15,13 +15,15 @@ export default {
       unit: "metric",
       mesto: null,
       details: null,
-      longitude: this.lonlat.split(",")[0],
-      latitude: this.lonlat.split(",")[1],
+      longitude: null,
+      latitude: null,
     };
   },
   props: ["lonlat"],
   created() {
-    this.cityNameDetails();
+    (this.longitude = this.lonlat.split(",")[0]),
+      (this.latitude = this.lonlat.split(",")[1]),
+      this.cityNameDetails();
     console.log(this.lonlat);
   },
   methods: {
