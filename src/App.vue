@@ -1,15 +1,24 @@
 <template>
   <div id="app">
     <main>
-      <nav class="navbar navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <span class="navbar-brand mb-0 h1">WeatherBeta</span>
-          <router-link to="/">Home</router-link>
-          <router-link to="/cities">Cities</router-link>
-          <router-link to="/city-details">City Details</router-link>
+          <router-link to="/" class="navbar-brand">WeatherBeta</router-link>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <router-link to="/" class="nav-link active" aria-current="page"
+                  >Home</router-link
+                >
+              </li>
+              <li class="nav-item">
+                <router-link to="/cities" class="nav-link">Cities</router-link>
+              </li>
+            </ul>
+          </div>
         </div>
-        <router-view />
       </nav>
+      <router-view />
     </main>
   </div>
 </template>
