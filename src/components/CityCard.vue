@@ -5,7 +5,7 @@
       style="max-width: 340px"
       @click="cityDetail"
     >
-      <div class="row g-0">
+      <div class="row g-0 mt-4">
         <div class="col-md-4" v-if="mesto.weather[0].main === 'Clouds'">
           <img
             src="../assets/Clouds.png"

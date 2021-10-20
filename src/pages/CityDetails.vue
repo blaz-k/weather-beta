@@ -72,31 +72,52 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
                 <em>Day 1: </em>
-                <strong>{{ Math.round(details.daily[1].temp.day) }} °C</strong>
+                <strong
+                  >{{ Math.round(details.daily[1].temp.day) }} °C ,
+                  {{ details.daily[1].weather[0].main }}</strong
+                >
               </li>
               <li class="list-group-item">
                 <em>Day 2: </em>
-                <strong>{{ Math.round(details.daily[2].temp.day) }} °C</strong>
+                <strong
+                  >{{ Math.round(details.daily[2].temp.day) }} °C ,
+                  {{ details.daily[2].weather[0].main }}</strong
+                >
               </li>
               <li class="list-group-item">
                 <em>Day 3: </em>
-                <strong>{{ Math.round(details.daily[3].temp.day) }} °C</strong>
+                <strong
+                  >{{ Math.round(details.daily[3].temp.day) }} °C ,
+                  {{ details.daily[3].weather[0].main }}</strong
+                >
               </li>
               <li class="list-group-item">
                 <em>Day 4: </em>
-                <strong>{{ Math.round(details.daily[4].temp.day) }} °C</strong>
+                <strong
+                  >{{ Math.round(details.daily[4].temp.day) }} °C ,
+                  {{ details.daily[4].weather[0].main }}</strong
+                >
               </li>
               <li class="list-group-item">
                 <em>Day 5: </em>
-                <strong>{{ Math.round(details.daily[5].temp.day) }} °C</strong>
+                <strong
+                  >{{ Math.round(details.daily[5].temp.day) }} °C ,
+                  {{ details.daily[5].weather[0].main }}</strong
+                >
               </li>
               <li class="list-group-item">
                 <em>Day 6: </em>
-                <strong>{{ Math.round(details.daily[6].temp.day) }} °C</strong>
+                <strong
+                  >{{ Math.round(details.daily[6].temp.day) }} °C ,
+                  {{ details.daily[6].weather[0].main }}</strong
+                >
               </li>
               <li class="list-group-item">
                 <em>Day 7: </em>
-                <strong>{{ Math.round(details.daily[7].temp.day) }} °C</strong>
+                <strong
+                  >{{ Math.round(details.daily[7].temp.day) }} °C ,
+                  {{ details.daily[7].weather[0].main }}</strong
+                >
               </li>
             </ul>
           </div>
